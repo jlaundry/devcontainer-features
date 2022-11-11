@@ -13,8 +13,7 @@ jobs:
     strategy:
       matrix:
         features:
-          - color
-          - hello
+          - azure-functions-core-tools
         baseImage:
           - debian:latest
           - ubuntu:latest
