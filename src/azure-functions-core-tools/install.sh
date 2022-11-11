@@ -103,7 +103,8 @@ install_using_apt() {
     # Import key safely (new 'signed-by' method rather than deprecated apt-key approach) and install
     get_common_setting MICROSOFT_GPG_KEYS_URI
     curl -sSL ${MICROSOFT_GPG_KEYS_URI} | gpg --dearmor > /usr/share/keyrings/microsoft-archive-keyring.gpg
-    echo "deb [arch=${architecture} signed-by=/usr/share/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/debian/$VERSION_ID/prod ${VERSION_CODENAME} main" > /etc/apt/sources.list.d/azure-functions-core-tools.list
+    VERSION_NAME=$(echo $NAME | tr '[:upper:]' '[:lower:]')
+    echo "deb [arch=${architecture} signed-by=/usr/share/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/$VERSION_NAME/$VERSION_ID/prod ${VERSION_CODENAME} main" > /etc/apt/sources.list.d/azure-functions-core-tools.list
     apt-get update
 
     if [ "${AZ_VERSION}" = "latest" ] || [ "${AZ_VERSION}" = "lts" ] || [ "${AZ_VERSION}" = "stable" ]; then
@@ -117,7 +118,7 @@ install_using_apt() {
         fi
     fi
 
-    if ! (apt-get install -yq azure-functions-core-tools${AZ_VERSION}); then
+    if ! (apt-get install -yq libicu azure-functions-core-tools${AZ_VERSION}); then
         rm -f /etc/apt/sources.list.d/azure-functions-core-tools.list
         return 1
     fi
