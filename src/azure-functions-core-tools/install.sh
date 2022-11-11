@@ -125,65 +125,13 @@ install_using_apt() {
     fi
 }
 
-install_using_pip() {
-    echo "(*) No pre-built binaries available in apt-cache. Installing via pip3."
-    if ! dpkg -s python3-minimal python3-pip libffi-dev python3-venv > /dev/null 2>&1; then
-        apt_get_update
-        apt-get -y install python3-minimal python3-pip libffi-dev python3-venv
-    fi
-    export PIPX_HOME=/usr/local/pipx
-    mkdir -p ${PIPX_HOME}
-    export PIPX_BIN_DIR=/usr/local/bin
-    export PYTHONUSERBASE=/tmp/pip-tmp
-    export PIP_CACHE_DIR=/tmp/pip-tmp/cache
-    pipx_bin=pipx
-    if ! type pipx > /dev/null 2>&1; then
-        pip3 install --disable-pip-version-check --no-cache-dir --user pipx
-        pipx_bin=/tmp/pip-tmp/bin/pipx
-    fi
-
-    if [ "${AZ_VERSION}" = "latest" ] || [ "${AZ_VERSION}" = "lts" ] || [ "${AZ_VERSION}" = "stable" ]; then
-        # Empty, meaning grab the "latest" in the apt repo
-        ver=""
-    else
-        ver="==${AZ_VERSION}"
-    fi
-
-    set +e
-        ${pipx_bin} install --pip-args '--no-cache-dir --force-reinstall' -f azure-functions-core-tools${ver}
-
-        # Fail gracefully
-        if [ "$?" != 0 ]; then
-            echo "Could not install azure-functions-core-tools${ver} via pip"
-            rm -rf /tmp/pip-tmp
-            return 1
-        fi
-    set -e
-}
-
 # See if we're on x86_64 and if so, install via apt-get, otherwise use pip3
 echo "(*) Installing Azure Functions Core Tools..."
 . /etc/os-release
 architecture="$(dpkg --print-architecture)"
 CACHED_AZURE_VERSION="${AZ_VERSION}" # In case we need to fallback to pip and the apt path has modified the AZ_VERSION variable.
-if [[ "${AZCLI_ARCHIVE_ARCHITECTURES}" = *"${architecture}"* ]] && [[  "${AZCLI_ARCHIVE_VERSION_CODENAMES}" = *"${VERSION_CODENAME}"* ]]; then
-    install_using_apt || use_pip="true"
-else
-    use_pip="true"
-fi
 
-if [ "${use_pip}" = "true" ]; then
-    AZ_VERSION=${CACHED_AZURE_VERSION}
-    install_using_pip
-
-    if [ "$?" != 0 ]; then
-        echo "Please provide a valid version for your distribution ${ID} ${VERSION_CODENAME} (${architecture})."
-        echo
-        echo "Valid versions in current apt-cache"
-        apt-cache madison azure-functions-core-tools | awk -F"|" '{print $2}' | grep -oP '^(.+:)?\K.+'
-        exit 1
-    fi
-fi
+install_using_apt
 
 # Clean up
 rm -rf /var/lib/apt/lists/*
