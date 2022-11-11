@@ -15,8 +15,6 @@ rm -rf /var/lib/apt/lists/*
 AZ_VERSION=${VERSION:-"latest"}
 
 MICROSOFT_GPG_KEYS_URI="https://packages.microsoft.com/keys/microsoft.asc"
-AZCLI_ARCHIVE_ARCHITECTURES="amd64"
-AZCLI_ARCHIVE_VERSION_CODENAMES="stretch buster bullseye bionic focal jammy"
 
 if [ "$(id -u)" -ne 0 ]; then
     echo -e 'Script must be run as root. Use sudo, su, or add "USER root" to your Dockerfile before running this script.'
@@ -105,7 +103,7 @@ install_using_apt() {
     # Import key safely (new 'signed-by' method rather than deprecated apt-key approach) and install
     get_common_setting MICROSOFT_GPG_KEYS_URI
     curl -sSL ${MICROSOFT_GPG_KEYS_URI} | gpg --dearmor > /usr/share/keyrings/microsoft-archive-keyring.gpg
-    echo "deb [arch=${architecture} signed-by=/usr/share/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/repos/azure-functions-core-tools/ ${VERSION_CODENAME} main" > /etc/apt/sources.list.d/azure-functions-core-tools.list
+    echo "deb [arch=${architecture} signed-by=/usr/share/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/debian/$VERSION_ID/prod ${VERSION_CODENAME} main" > /etc/apt/sources.list.d/azure-functions-core-tools.list
     apt-get update
 
     if [ "${AZ_VERSION}" = "latest" ] || [ "${AZ_VERSION}" = "lts" ] || [ "${AZ_VERSION}" = "stable" ]; then
