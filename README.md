@@ -15,7 +15,7 @@ You may learn about Features at [containers.dev](https://containers.dev/implemen
 
 Azure Functions Core Tools are used when developing Function apps, to create a local development server.
 
-To install, add `ghcr.io/jlaundry/devcontainers-feature/azure-functions-core-tools:1` to the `.devcontainer.json` features list. For example, if you develop Python-based Azure Functions, your `.devcontainer.json` should look like:
+To install, add `ghcr.io/jlaundry/devcontainer-features/azure-functions-core-tools:1` to the `.devcontainer.json` features list. For example, if you develop Python-based Azure Functions, your `.devcontainer.json` should look like:
 
 ```jsonc
 {
@@ -25,7 +25,7 @@ To install, add `ghcr.io/jlaundry/devcontainers-feature/azure-functions-core-too
 		"ghcr.io/devcontainers/features/node:1": {
 			"version": "lts"
 		},
-		"ghcr.io/jlaundry/devcontainers-feature/azure-functions-core-tools:1": {
+		"ghcr.io/jlaundry/devcontainer-features/azure-functions-core-tools:1": {
 			"version": "latest"
 		} 
 	}
