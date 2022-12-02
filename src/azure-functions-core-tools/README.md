@@ -1,15 +1,13 @@
 
 # Azure Functions Core Tools (azure-functions-core-tools)
 
-Installs the Azure Functions Core Tools along with needed dependencies. Useful for base Dockerfiles that often are missing required install dependencies like gpg.
+Installs the Azure Functions Core Tools along with needed dependencies. Useful for developing Azure Function apps inside codespaces.
 
 ## Example Usage
 
 ```json
 "features": {
-    "ghcr.io/devcontainers/features/azure-functions-core-tools:1": {
-        "version": "latest"
-    }
+    "ghcr.io/jlaundry/devcontainer-features/azure-functions-core-tools:1": {}
 }
 ```
 
@@ -23,4 +21,4 @@ Installs the Azure Functions Core Tools along with needed dependencies. Useful f
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/devcontainers/features/blob/main/src/azure-functions-core-tools/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/jlaundry/devcontainer-features/blob/main/src/azure-functions-core-tools/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
