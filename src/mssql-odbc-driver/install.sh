@@ -60,7 +60,7 @@ install_using_apt() {
     echo "deb [arch=${architecture} signed-by=/usr/share/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/$ID/$VERSION_ID/prod ${VERSION_CODENAME} main" > /etc/apt/sources.list.d/mssql-release.list
     apt-get update
 
-    if ! (ACCEPT_EULA=Y apt-get install -yq msodbcsql${ODBC_VERSION} python3-dev gcc g++ unixodbc-dev); then
+    if ! (ACCEPT_EULA=Y apt-get install -yq msodbcsql${ODBC_VERSION} mssql-tools python3-dev gcc g++ unixodbc-dev); then
         rm -f /etc/apt/sources.list.d/mssql-release.list
         return 1
     fi
