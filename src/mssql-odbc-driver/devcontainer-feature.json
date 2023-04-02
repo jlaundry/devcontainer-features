@@ -1,6 +1,6 @@
 {
   "id": "mssql-odbc-driver",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "SQL Server ODBC Driver",
   "documentationURL": "https://github.com/jlaundry/devcontainer-features/tree/main/src/mssql-odbc-driver",
   "description": "Installs the Microsoft SQL Server ODBC Driver.",
