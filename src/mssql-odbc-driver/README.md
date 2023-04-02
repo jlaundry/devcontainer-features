@@ -1,7 +1,7 @@
 
 # SQL Server ODBC Driver (mssql-odbc-driver)
 
-Installs the SQL Server ODBC Driver along with needed dependencies. Useful for developing apps inside codespaces that connect to a SQL Server instance.
+Installs the Microsoft SQL Server ODBC Driver.
 
 ## Example Usage
 
