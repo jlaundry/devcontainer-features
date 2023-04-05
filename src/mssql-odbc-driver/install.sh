@@ -70,6 +70,14 @@ install_using_apt() {
         rm -f /etc/apt/sources.list.d/mssql-release.list
         return 1
     fi
+    
+    # Add to PATH
+    if [ $ODBC_VERSION -eq "18" ]; then
+        echo 'export PATH="$PATH:/opt/mssql-tools18/bin"' >> ~/.bashrc
+    else
+        echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
+    fi
+    source ~/.bashrc
 }
 
 echo "(*) Installing SQL Server ODBC Driver..."
