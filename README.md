@@ -9,37 +9,32 @@ Issues and PR's are welcome, but no guarantees are made.
 
 You may learn about Features at [containers.dev](https://containers.dev/implementors/features/), which is the website for the dev container specification.
 
-## Usage
+## Known Issues
 
-### `azure-function-core-tools`
+  * `azure-function-core-tools`
+	* Upstream does not support AArch64 / arm64 architectures. https://github.com/Azure/azure-functions-core-tools/issues/3112
+  * `mssql-odbc-driver`
+	* Upstream does not (yet) support Debian 12. https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server
+
+## Usage
 
 Azure Functions Core Tools are used when developing Function apps, to create a local development server.
 
-To install, add `ghcr.io/jlaundry/devcontainer-features/azure-functions-core-tools:1` to the `.devcontainer.json` features list. For example, if you develop Python-based Azure Functions, your `.devcontainer.json` should look like:
+The Microsoft SQL Server ODBC Driver is used to connect to SQL Server instances, including Azure SQL.
+
+For example, if you develop Python-based Azure Functions that use SQL Server, your `.devcontainer.json` should look like:
 
 ```jsonc
 {
 	"name": "Python 3",
-	"image": "mcr.microsoft.com/devcontainers/python:3.9",
+	"image": "mcr.microsoft.com/devcontainers/python:3.10-bullseye",
 	"features": {
-		"ghcr.io/devcontainers/features/node:1": {
-			"version": "lts"
-		},
 		"ghcr.io/jlaundry/devcontainer-features/azure-functions-core-tools:1": {
 			"version": "latest"
-		} 
+		},
+		"ghcr.io/jlaundry/devcontainer-features/mssql-odbc-driver:1": {
+			"version": "17"
+		}
 	}
-
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "pip3 install --user -r requirements.txt",
-
-	// Configure tool-specific properties.
-	// "customizations": {},
-
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
 }
 ```
