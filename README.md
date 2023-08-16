@@ -12,7 +12,8 @@ You may learn about Features at [containers.dev](https://containers.dev/implemen
 ## Known Issues
 
   * `azure-function-core-tools`
-	* Upstream does not support AArch64 / arm64 architectures. https://github.com/Azure/azure-functions-core-tools/issues/3112
+	* Upstream does not (yet) support Debian 12. https://github.com/Azure/azure-functions-core-tools/issues/3431
+  	* Upstream does not (yet) support AArch64 / arm64 architectures. https://github.com/Azure/azure-functions-core-tools/issues/3112
   * `mssql-odbc-driver`
 	* Upstream does not (yet) support Debian 12. https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server
 
