@@ -15,7 +15,7 @@ Installs the Microsoft SQL Server ODBC Driver.
 
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
-| version | Select or enter an ODBC driver version. Defaults to 17. (available versions may vary by Linux distribution.) | string | 17 |
+| version | Select or enter an ODBC driver version. Defaults to 18. (available versions may vary by Linux distribution.) | string | 18 |
 
 
 
