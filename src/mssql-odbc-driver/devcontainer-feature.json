@@ -1,6 +1,6 @@
 {
   "id": "mssql-odbc-driver",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name": "SQL Server ODBC Driver",
   "documentationURL": "https://github.com/jlaundry/devcontainer-features/tree/main/src/mssql-odbc-driver",
   "description": "Installs the Microsoft SQL Server ODBC Driver.",
@@ -11,8 +11,8 @@
         "17",
         "18"
       ],
-      "default": "17",
-      "description": "Select or enter an ODBC driver version. Defaults to 17. (available versions may vary by Linux distribution.)"
+      "default": "18",
+      "description": "Select or enter an ODBC driver version. Defaults to 18. (available versions may vary by Linux distribution.)"
     }
   },
   "installsAfter": [
