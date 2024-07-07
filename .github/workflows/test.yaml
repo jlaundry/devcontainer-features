@@ -16,7 +16,9 @@ jobs:
           - azure-functions-core-tools
           - mssql-odbc-driver
         baseImage:
+          - debian:11
           - debian:latest
+          - ubuntu:22.04
           - ubuntu:latest
           - mcr.microsoft.com/devcontainers/base:ubuntu
     steps:
