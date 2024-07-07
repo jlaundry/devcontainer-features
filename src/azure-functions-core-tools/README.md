@@ -17,6 +17,12 @@ Installs the Azure Functions Core Tools along with needed dependencies. Useful f
 |-----|-----|-----|-----|
 | version | Select or enter an Azure Functions Core Tools version. (Available versions may vary by Linux distribution.) | string | latest |
 
+## Customizations
+
+### VS Code Extensions
+
+- `ms-azuretools.vscode-azurefunctions`
+
 
 
 ---
