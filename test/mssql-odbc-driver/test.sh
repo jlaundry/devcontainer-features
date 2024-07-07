@@ -6,7 +6,11 @@ set -e
 source dev-container-features-test-lib
 
 # Definition specific tests
-check "version" bash -c "/opt/mssql-tools/bin/sqlcmd -? | grep -i version"
+if test -f /opt/mssql-tools18/bin/sqlcmd; then
+  check "version" bash -c "/opt/mssql-tools18/bin/sqlcmd -? | grep -i version"
+else
+  check "version" bash -c "/opt/mssql-tools/bin/sqlcmd -? | grep -i version"
+fi
 
 # Report result
 reportResults
