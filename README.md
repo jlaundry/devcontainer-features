@@ -12,9 +12,7 @@ You may learn about Features at [containers.dev](https://containers.dev/implemen
 ## Known Issues
 
   * `azure-function-core-tools`
-  	* Upstream does not (yet) support AArch64 / arm64 architectures. https://github.com/Azure/azure-functions-core-tools/issues/3112
-  * `mssql-odbc-driver`
-	* Upstream does not (yet) support Ubuntu 24.04. https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server
+  	* Upstream does not (yet) support Debian 13 (trixie). https://github.com/Azure/azure-functions-core-tools/issues/4641
 
 ## Usage
 
@@ -33,7 +31,7 @@ For example, if you develop Python-based Azure Functions that use SQL Server, yo
 			"version": "latest"
 		},
 		"ghcr.io/jlaundry/devcontainer-features/mssql-odbc-driver:1": {
-			"version": "17"
+			"version": "18"
 		}
 	}
 }
