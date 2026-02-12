@@ -27,7 +27,7 @@ For example, if you develop Python-based Azure Functions that use SQL Server, yo
 ```jsonc
 {
 	"name": "Python 3",
-	"image": "mcr.microsoft.com/devcontainers/python:3.12-bullseye",
+	"image": "mcr.microsoft.com/devcontainers/python:3.12-bookworm",
 	"features": {
 		"ghcr.io/jlaundry/devcontainer-features/azure-functions-core-tools:1": {
 			"version": "latest"
