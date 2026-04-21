@@ -12,7 +12,7 @@ set -e
 # Clean up
 rm -rf /var/lib/apt/lists/*
 
-ODBC_VERSION=${VERSION:-"latest"}
+ODBC_VERSION=${VERSION:-"18"}
 
 OS_VERSION_ID="$(source /etc/os-release; echo "${ID}:${VERSION_ID}")"
 case $OS_VERSION_ID in
@@ -64,10 +64,11 @@ export DEBIAN_FRONTEND=noninteractive
 
 
 install_using_apt() {
+    echo "installing msodbcsql withODBC_VERSION=${ODBC_VERSION} using MICROSOFT_GPG_KEYS_URI=${MICROSOFT_GPG_KEYS_URI} on ${architecture}"
     # Install dependencies
     check_packages apt-transport-https curl ca-certificates gnupg2 dirmngr
+
     # Import key safely (new 'signed-by' method rather than deprecated apt-key approach) and install
-    get_common_setting MICROSOFT_GPG_KEYS_URI
     curl -sSL ${MICROSOFT_GPG_KEYS_URI} | gpg --dearmor > /usr/share/keyrings/microsoft-prod.gpg
 
     echo "deb [arch=${architecture} signed-by=/usr/share/keyrings/microsoft-prod.gpg] https://packages.microsoft.com/$ID/$VERSION_ID/prod ${VERSION_CODENAME} main" > /etc/apt/sources.list.d/mssql-release.list

@@ -111,10 +111,12 @@ apt_cache_version_soft_match() {
 }
 
 install_using_apt() {
+    echo "installing azure-functions-core-tools with AZ_VERSION=${AZ_VERSION} using MICROSOFT_GPG_KEYS_URI=${MICROSOFT_GPG_KEYS_URI} on ${architecture}"
+    
     # Install dependencies
     check_packages apt-transport-https curl ca-certificates gnupg2 dirmngr
+
     # Import key safely (new 'signed-by' method rather than deprecated apt-key approach) and install
-    get_common_setting MICROSOFT_GPG_KEYS_URI
     curl -sSL ${MICROSOFT_GPG_KEYS_URI} | gpg --dearmor > /usr/share/keyrings/microsoft-prod.gpg
     echo "deb [arch=${architecture} signed-by=/usr/share/keyrings/microsoft-prod.gpg] https://packages.microsoft.com/$ID/$VERSION_ID/prod ${VERSION_CODENAME} main" > /etc/apt/sources.list.d/azure-functions-core-tools.list
     apt-get update
