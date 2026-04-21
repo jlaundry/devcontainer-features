@@ -1,6 +1,6 @@
 {
   "id": "azure-functions-core-tools",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "Azure Functions Core Tools",
   "documentationURL": "https://github.com/jlaundry/devcontainer-features/tree/main/src/azure-functions-core-tools",
   "description": "Installs the Azure Functions Core Tools along with needed dependencies. Useful for developing Azure Function apps inside codespaces.",
