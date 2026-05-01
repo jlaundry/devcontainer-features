@@ -12,7 +12,9 @@ You may learn about Features at [containers.dev](https://containers.dev/implemen
 ## Known Issues
 
   * `azure-function-core-tools`
-  	* Upstream does not (yet) support Debian 13 (trixie). https://github.com/Azure/azure-functions-core-tools/issues/4641
+  	* Upstream does not (yet) support Ubuntu 26.04 (Resolute Raccoon)
+  * `mssql-odbc-driver`
+  	* Upstream does not (yet) support Ubuntu 26.04 (Resolute Raccoon)
 
 ## Usage
 
